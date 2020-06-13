@@ -39,7 +39,10 @@
   (enable-ligatures))
 
 (defun set-font:pragmata-pro ()
-  (set-frame-font "PragmataPro 13" nil t)
-  (enable-ligatures))
+  (set-frame-font "PragmataPro 13" nil t))
 
-(set-font:pragmata-pro)
+(defun set-font:input-mono ()
+  (set-frame-font "Input Mono Narrow 12" nil t))
+
+(when (display-graphic-p)
+  (set-font:pragmata-pro))
