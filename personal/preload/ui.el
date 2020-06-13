@@ -1,6 +1,3 @@
-(setq initial-frame-alist
-      '((top . 1) (left . 1) (width . 160) (height . 100)))
-
 (setq prelude-theme 'dracula)
 
 (defun enable-ligatures ()
@@ -45,4 +42,6 @@
   (set-frame-font "Input Mono Narrow 12" nil t))
 
 (when (display-graphic-p)
+  (setq initial-frame-alist
+        '((top . 1) (left . 1) (width . 160) (height . 100)))
   (set-font:pragmata-pro))
