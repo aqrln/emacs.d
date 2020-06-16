@@ -1,4 +1,4 @@
-(setq prelude-theme 'dracula)
+(setq prelude-theme 'solarized-dark-high-contrast)
 
 (defun enable-ligatures ()
   (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
@@ -36,10 +36,7 @@
 (defun set-font:pragmata-pro ()
   (set-frame-font "PragmataPro 13" nil t))
 
-(defun set-font:input-mono ()
-  (set-frame-font "Input Mono Narrow 12" nil t))
-
 (when (display-graphic-p)
   (setq initial-frame-alist
         '((top . 1) (left . 1) (width . 160) (height . 100)))
-  (set-font:pragmata-pro))
+  (set-frame-font "Cascadia Code 14" nil t))
