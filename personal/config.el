@@ -56,3 +56,5 @@
 
 (global-set-key (kbd "s-1") 'prettier-js)
 (global-set-key (kbd "s-2") 'run-prettier-and-then-save)
+
+(desktop-save-mode 1)
