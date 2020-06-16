@@ -1,4 +1,4 @@
-(setq prelude-theme 'solarized-dark-high-contrast)
+(setq prelude-theme 'solarized-dark)
 
 (defun enable-ligatures ()
   (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
