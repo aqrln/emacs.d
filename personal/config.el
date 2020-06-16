@@ -1,5 +1,6 @@
 (global-display-line-numbers-mode)
 (setq prelude-format-on-save nil)
+(setq prelude-auto-save nil)
 
 (require 'prelude-programming)
 (prelude-require-packages '(lsp-ivy add-node-modules-path prettier-js))
@@ -43,6 +44,15 @@
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
-(add-hook 'typescript-mode-hook 'prettier-js-mode)
+(defun run-prettier-on-save ()
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
+  (add-hook 'typescript-mode-hook 'prettier-js-mode))
+
+(defun run-prettier-and-then-save ()
+  (interactive)
+  (prettier-js)
+  (save-buffer))
+
+(global-set-key (kbd "s-1") 'prettier-js)
+(global-set-key (kbd "s-2") 'run-prettier-and-then-save)
