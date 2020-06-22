@@ -44,6 +44,19 @@
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 
+(with-eval-after-load 'lsp-mode
+  (mapc #'lsp-flycheck-add-mode '(typescript-mode js2-mode web-mode)))
+
+(setq lsp-eslint-server-command
+      `("node"
+        ,(expand-file-name (car (last (file-expand-wildcards "/Users/alex/.vscode-insiders/extensions/dbaeumer.vscode-eslint-*/server/out/eslintServer.js"))))
+        "--stdio"))
+
+(setq lsp-enable-semantic-highlighting t)
+(setq lsp-semantic-tokens-apply-modifiers t)
+;(setq lsp-document-sync-method lsp--sync-none)
+(setq lsp-lens-auto-enable t)
+
 (defun run-prettier-on-save ()
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
@@ -58,3 +71,7 @@
 (global-set-key (kbd "s-2") 'run-prettier-and-then-save)
 
 (desktop-save-mode 1)
+(super-save-mode -1)
+(scroll-bar-mode -1)
+
+(global-set-key (kbd "s-b") 'helm-buffers-list)

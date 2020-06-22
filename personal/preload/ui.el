@@ -37,6 +37,4 @@
   (set-frame-font "PragmataPro 13" nil t))
 
 (when (display-graphic-p)
-  (setq initial-frame-alist
-        '((top . 1) (left . 1) (width . 160) (height . 100)))
-  (set-frame-font "Cascadia Code 14" nil t))
+  (set-frame-font "Fantasque Sans Mono 14" nil t))
