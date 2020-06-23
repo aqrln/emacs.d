@@ -32,30 +32,50 @@
 ;;; Code:
 
 (require 'prelude-programming)
-(prelude-require-packages '(tide))
-
+(prelude-require-packages '(tide add-node-modules-path company))
+(require 'tide)
 (require 'typescript-mode)
+(require 'web-mode)
 
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+(eval-after-load 'typescript-mode
+  '(add-hook 'typescript-mode-hook #'add-node-modules-path))
+
+(eval-after-load 'web-mode
+  '(add-hook 'web-mode-hook #'add-node-modules-path))
+
+(setq tide-native-json-parsing t)
+
+(defun prelude-ts-mode-defaults ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
 
 (with-eval-after-load 'typescript-mode
-  (defun prelude-ts-mode-defaults ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (eldoc-mode +1)
-    (tide-hl-identifier-mode +1))
-
-  ;; formats the buffer before saving
-  (add-hook 'before-save-hook
-            (lambda ()
-              (when prelude-format-on-save
-                (tide-format-before-save))))
-
   (setq prelude-ts-mode-hook 'prelude-ts-mode-defaults)
-
   (add-hook 'typescript-mode-hook (lambda () (run-hooks 'prelude-ts-mode-hook))))
+
+(with-eval-after-load 'web-mode
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                (prelude-ts-mode-defaults)))))
+
+(setq company-tooltip-align-annotations t)
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'typescript-mode)
+
+(flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append)
+(flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append)
+
+(global-set-key (kbd "M-RET") 'tide-fix)
 
 (provide 'prelude-ts)
 
