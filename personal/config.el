@@ -19,3 +19,5 @@
 (scroll-bar-mode -1)
 
 (global-set-key (kbd "s-b") 'helm-buffers-list)
+
+(setq dired-use-ls-dired nil)
