@@ -17,6 +17,7 @@
 (desktop-save-mode 1)
 (super-save-mode -1)
 (scroll-bar-mode -1)
+(setq print-circle 1)
 
 (global-set-key (kbd "s-b") 'helm-buffers-list)
 
