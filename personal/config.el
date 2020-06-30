@@ -2,7 +2,7 @@
 (setq prelude-format-on-save nil)
 (setq prelude-auto-save nil)
 
-(prelude-require-packages '(lsp-ivy prettier-js))
+(prelude-require-packages '(lsp-ivy prettier-js rg))
 
 (require 'prettier-js)
 
@@ -21,3 +21,6 @@
 (global-set-key (kbd "s-b") 'helm-buffers-list)
 
 (setq dired-use-ls-dired nil)
+
+(require 'rg)
+(global-set-key (kbd "C-c C-s") 'rg-menu)
