@@ -46,7 +46,9 @@
 (eval-after-load 'web-mode
   '(add-hook 'web-mode-hook #'add-node-modules-path))
 
+(setq tide-completion-detailed t)
 (setq tide-native-json-parsing t)
+(setq tide-server-max-response-length 200971520)
 
 (defun prelude-ts-mode-defaults ()
   (interactive)
@@ -76,6 +78,8 @@
 (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append)
 
 (global-set-key (kbd "M-RET") 'tide-fix)
+(global-set-key (kbd "C-x C-, C-o") 'tide-organize-imports)
+(global-set-key (kbd "C-x C-, C-r") 'tide-rename-symbol)
 
 (provide 'prelude-ts)
 
