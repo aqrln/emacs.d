@@ -49,7 +49,7 @@
 (setq require-final-newline t)
 
 ;; delete the selection with a keypress
-(delete-selection-mode t)
+(delete-selection-mode -1)
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
