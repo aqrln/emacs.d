@@ -69,6 +69,7 @@
   (when prelude-guru
     (guru-mode +1))
   (smartparens-mode +1)
+  (rainbow-delimiters-mode +1)
   (prelude-enable-whitespace)
   (prelude-local-comment-auto-fill))
 
