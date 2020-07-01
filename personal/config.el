@@ -25,3 +25,5 @@
 
 (require 'rg)
 (global-set-key (kbd "C-c C-s") 'rg-menu)
+
+(setq projectile-enable-caching t)
