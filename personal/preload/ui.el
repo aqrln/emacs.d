@@ -33,8 +33,5 @@
   (set-frame-font "Dank Mono 14" nil t)
   (enable-ligatures))
 
-(defun set-font:pragmata-pro ()
-  (set-frame-font "PragmataPro 13" nil t))
-
 (when (display-graphic-p)
   (set-frame-font "Fantasque Sans Mono 14" nil t))
