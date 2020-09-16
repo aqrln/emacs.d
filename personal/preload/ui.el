@@ -1,4 +1,4 @@
-(setq prelude-theme 'solarized-dark)
+(setq prelude-theme 'dracula)
 
 (defun enable-ligatures ()
   (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
@@ -35,3 +35,12 @@
 
 (when (display-graphic-p)
   (set-frame-font "Fantasque Sans Mono 14" nil t))
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
+
+(unless (display-graphic-p)
+  (menu-bar-mode -1))

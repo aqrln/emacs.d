@@ -1,4 +1,3 @@
-(global-display-line-numbers-mode)
 (setq prelude-format-on-save nil)
 (setq prelude-auto-save nil)
 
@@ -13,6 +12,7 @@
 
 (global-set-key (kbd "s-1") 'prettier-js)
 (global-set-key (kbd "s-2") 'run-prettier-and-then-save)
+(global-set-key (kbd "C-M-x C-M-s") 'run-prettier-and-then-save)
 
 (desktop-save-mode 1)
 (super-save-mode -1)
@@ -27,3 +27,5 @@
 (global-set-key (kbd "C-c C-s") 'rg-menu)
 
 (setq projectile-enable-caching t)
+
+(global-set-key (kbd "M-+") 'er/expand-region)

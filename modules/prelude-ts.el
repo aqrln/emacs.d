@@ -78,8 +78,8 @@
 (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append)
 
 (global-set-key (kbd "M-RET") 'tide-fix)
-(global-set-key (kbd "C-x C-, C-o") 'tide-organize-imports)
-(global-set-key (kbd "C-x C-, C-r") 'tide-rename-symbol)
+(global-set-key (kbd "C-x , o") 'tide-organize-imports)
+(global-set-key (kbd "C-x , r") 'tide-rename-symbol)
 
 (provide 'prelude-ts)
 
